@@ -25,6 +25,16 @@ public class MedianFormulaTests
         ExpectedResult = 7.303,
         TestName = "Median from double[] - odd count")
     ]
+    [TestCase(
+        new double[] { 5, 5.0, 5.000, 5, 5, 5 },
+        ExpectedResult = 5,
+        TestName = "Median from double[] - same elements, even count")
+    ]
+    [TestCase(
+        new double[] { 5, 5.0, 5.000, 5, 5 },
+        ExpectedResult = 5,
+        TestName = "Median from double[] - same elements, odd count")
+    ]
     [DefaultFloatingPointTolerance(0.05)]
     public double ListOfDouble_Pass(double[] dataSet)
     {

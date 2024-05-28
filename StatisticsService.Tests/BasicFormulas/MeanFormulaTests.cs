@@ -43,6 +43,11 @@ public class MeanFormulaTests
         ExpectedResult = 2587529024788.32,
         TestName = "Mean from double[] - with outliers")
     ]
+    [TestCase(
+        new double[] { 5, 5.0, 5.000, 5, 5, 5 },
+        ExpectedResult = 5,
+        TestName = "Mean from double[] - same elements")
+    ]
     [DefaultFloatingPointTolerance(0.0001)]
     public double ListOfDouble_Pass(double[] dataSet)
     {
