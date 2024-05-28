@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StatisticsService", "StatisticsService", "{10257F1C-C6A7-43A1-BF5B-6CBFD73F9B77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatisticsLibrary", "StatisticsService\StatisticsLibrary\StatisticsLibrary.csproj", "{9BD185F1-7FAF-43D3-BE83-AA13A9849E65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatisticsService.Tests", "StatisticsService.Tests\StatisticsService.Tests.csproj", "{DD20F565-DC98-4B11-94D6-5C9AE0B2B6D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BD185F1-7FAF-43D3-BE83-AA13A9849E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BD185F1-7FAF-43D3-BE83-AA13A9849E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BD185F1-7FAF-43D3-BE83-AA13A9849E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BD185F1-7FAF-43D3-BE83-AA13A9849E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD20F565-DC98-4B11-94D6-5C9AE0B2B6D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD20F565-DC98-4B11-94D6-5C9AE0B2B6D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD20F565-DC98-4B11-94D6-5C9AE0B2B6D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD20F565-DC98-4B11-94D6-5C9AE0B2B6D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9BD185F1-7FAF-43D3-BE83-AA13A9849E65} = {10257F1C-C6A7-43A1-BF5B-6CBFD73F9B77}
+	EndGlobalSection
+EndGlobal
