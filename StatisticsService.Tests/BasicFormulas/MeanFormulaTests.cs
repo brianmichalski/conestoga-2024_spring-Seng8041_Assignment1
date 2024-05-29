@@ -18,21 +18,18 @@ public class MeanFormulaTests
     [TestCase(
         new double[] { 3, 1, 2, 3, 4, 9, 23, 1 },
         ExpectedResult = 5.75,
-
-        TestName = "Mean with int[] - not outliers ")
+        TestName = "Mean from int[] - no outliers ")
     ]
     [TestCase(
         new double[] { 3, 1, 2, 39284, 3, 4, 7812897, 9, 23, 1, 200 },
         ExpectedResult = 713857,
-        TestName = "Mean with int[] - with outliers")
+        TestName = "Mean from int[] - with outliers")
     ]
-    [DefaultFloatingPointTolerance(0.0001)]
-    public double ListOfInteger_Pass(double[] dataSet)
-    {
-        return this._basicFormulas.Mean(new List<double>(dataSet));
-    }
-
-    [Test]
+    [TestCase(
+        new double[] { 3, -1, 2, 3, 4, 9, -23, 1 },
+        ExpectedResult = -0.25,
+        TestName = "Mean with negative numbers")
+    ]
     [TestCase(
         new double[] { 1.1, 2.2, 3.3 },
         ExpectedResult = 2.2,
@@ -49,14 +46,25 @@ public class MeanFormulaTests
         TestName = "Mean from double[] - same elements")
     ]
     [DefaultFloatingPointTolerance(0.0001)]
-    public double ListOfDouble_Pass(double[] dataSet)
+    public double NotEmptyDataSet_Pass(double[] dataSet)
     {
         return this._basicFormulas.Mean(new List<double>(dataSet));
     }
 
+    [Test(
+        Description = "Mean from big dataset",
+        ExpectedResult = 1863.02424)
+    ]
+    [DefaultFloatingPointTolerance(0.00001)]
+    public double BigDataSet_Pass()
+    {
+        return this._basicFormulas.Mean(
+            new List<double>(TestDataSet._bigDataSet));
+    }
+
     [Test]
     [TestCase(
-        TestName = "Mean from empty double[]")
+        TestName = "Mean from empty dataset")
     ]
     public void EmptyDataset_Exception()
     {

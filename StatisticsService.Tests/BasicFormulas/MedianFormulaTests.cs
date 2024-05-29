@@ -26,6 +26,11 @@ public class MedianFormulaTests
         TestName = "Median from double[] - odd count")
     ]
     [TestCase(
+        new double[] { 9.123, 2.012, 1.8, 7.3, 6.6, 9.123, 14.35 },
+        ExpectedResult = 7.3,
+        TestName = "Median from double[] - repeating decimals")
+    ]
+    [TestCase(
         new double[] { 5, 5.0, 5.000, 5, 5, 5 },
         ExpectedResult = 5,
         TestName = "Median from double[] - same elements, even count")
@@ -35,32 +40,31 @@ public class MedianFormulaTests
         ExpectedResult = 5,
         TestName = "Median from double[] - same elements, odd count")
     ]
-    [DefaultFloatingPointTolerance(0.05)]
-    public double ListOfDouble_Pass(double[] dataSet)
+    [TestCase(
+        new double[] { 3, -1, 2, 3, 4, 9, -23, 1 },
+        ExpectedResult = 2.5,
+        TestName = "Median with negative numbers")
+    ]
+    [DefaultFloatingPointTolerance(0.001)]
+    public double NotEmptyDataSet_Pass(double[] dataSet)
     {
         return this._basicFormulas.Median(new List<double>(dataSet));
     }
 
-    [Test]
-    [TestCase(
-        new double[] { 2, 1, 7, 6, 9, 14 },
-        ExpectedResult = 6.5,
-        TestName = "Median from int[] - even count")
+    [Test(
+        Description = "Median from big dataset",
+        ExpectedResult = 89)
     ]
-    [TestCase(
-        new double[] { 2, 7, 6, 9, 14 },
-        ExpectedResult = 7,
-        TestName = "Median from int[] - odd count")
-    ]
-    [DefaultFloatingPointTolerance(0.05)]
-    public double ListOfInt_Pass(double[] dataSet)
+    [DefaultFloatingPointTolerance(0.00001)]
+    public double BigDataSet_Pass()
     {
-        return this._basicFormulas.Median(new List<double>(dataSet));
+        return this._basicFormulas.Median(
+            new List<double>(TestDataSet._bigDataSet));
     }
 
     [Test]
     [TestCase(
-        TestName = "Median from empty double[]")
+        TestName = "Median from empty dataset")
     ]
     public void EmptyDataset_Exception()
     {

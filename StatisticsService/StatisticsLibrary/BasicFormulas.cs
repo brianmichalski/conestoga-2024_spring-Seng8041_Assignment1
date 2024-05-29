@@ -1,4 +1,6 @@
-﻿namespace StatisticsLibrary;
+﻿using System.Linq;
+
+namespace StatisticsLibrary;
 
 public class BasicFormulas
 {
@@ -28,20 +30,21 @@ public class BasicFormulas
         return data[medianIndex];
     }
 
-    public double Mode(List<double> data)
+    public List<double> Mode(List<double> data)
     {
         this.checkIfDatasetHasElements(data);
 
-        var frequencyByElement = data.GroupBy(number => number)
-            .OrderByDescending(g => g.Count())
-            .ThenBy(g => g.Key)
+        var frequencyByElement = data.GroupBy(n => n)
+            .Select(group => new { Number = group.Key, Count = group.Count() })
             .ToList();
 
-        int maxCount = frequencyByElement.First().Count();
-        if (frequencyByElement.Count(g => g.Count() == maxCount) > 1)
+        int maxCount = frequencyByElement.Max(g => g.Count);
+        if (maxCount == 1)
             throw new ArgumentException("Dataset has no mode.");
 
-        return frequencyByElement.First().Key;
+        return frequencyByElement.Where(g => g.Count == maxCount)
+            .Select(g => g.Number)
+            .ToList();
     }
 
     private void checkIfDatasetHasElements(List<double> data)
