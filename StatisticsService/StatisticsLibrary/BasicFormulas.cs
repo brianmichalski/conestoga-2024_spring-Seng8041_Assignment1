@@ -40,7 +40,9 @@ public class BasicFormulas
 
         int maxCount = frequencyByElement.Max(g => g.Count);
         if (maxCount == 1)
-            throw new ArgumentException("Dataset has no mode.");
+        {
+            return new List<double>();
+        }
 
         return frequencyByElement.Where(g => g.Count == maxCount)
             .Select(g => g.Number)

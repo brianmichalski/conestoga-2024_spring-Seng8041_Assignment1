@@ -35,6 +35,11 @@ public class ModeFormulaTests
         new double[] { 5 },
         TestName = "Mode from double[] - same elements")
     ]
+    [TestCase(
+        new double[] { -1, 1, 2, 3, 4, 5, 99 },
+        new double[] {},
+        TestName = "Mode from double[] - no mode")
+    ]
     public void NotEmptyDataSet_Pass(double[] dataSet, double[] expectedResult)
     {
         List<double> modes = this._basicFormulas.Mode(new List<double>(dataSet));
